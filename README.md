@@ -1,48 +1,49 @@
-# Ambiguous Medical Image Segmentation using Diffusion Models
-📋 Overview
+# Phân đoạn ảnh y khoa mơ hồ sử dụng mô hình khuếch tán (Diffusion Models)
 
-This project aims to develop a diffusion-based generative model capable of producing multiple plausible segmentation masks for a given medical image.
-Instead of generating a single deterministic mask, our approach captures the distribution of expert opinions, providing a more comprehensive understanding of image ambiguity in medical contexts.
+Tổng quan
 
-👥 Team Members
-No.	Name	Student ID	Role
-1	Đinh Thái Tuấn	22000130	Team Leader
-🎯 Problem Statement
+Dự án này nhằm phát triển một mô hình sinh dựa trên cơ chế khuếch tán (diffusion-based generative model), có khả năng tạo ra nhiều mặt nạ phân đoạn khả dĩ cho cùng một ảnh y khoa.
+Thay vì chỉ tạo ra một mặt nạ cố định, phương pháp của chúng tôi hướng đến việc nắm bắt sự phân bố trong đánh giá của các chuyên gia, giúp hiểu rõ hơn về tính mơ hồ và bất định trong quá trình chẩn đoán hình ảnh y khoa.
 
-Traditional segmentation models (e.g., U-Net, CNNs) provide one fixed output per image, which fails to capture the inherent uncertainty and expert variability in medical imaging.
-This project explores how Diffusion Probabilistic Models (DPMs) can model such uncertainty by generating diverse and realistic segmentation masks.
+Thành viên nhóm
+STT	Họ tên	Mã sinh viên	Vai trò
+1	Đinh Thái Tuấn	22000130	Nhóm trưởng
+Vấn đề cần giải quyết
 
-📚 Related Work
+Các mô hình phân đoạn truyền thống (như U-Net, CNNs) chỉ tạo ra một kết quả duy nhất cho mỗi ảnh, không phản ánh được tính bất định và sự khác biệt giữa các chuyên gia trong quá trình gán nhãn ảnh y khoa.
+Dự án này nghiên cứu cách mô hình khuếch tán xác suất (Diffusion Probabilistic Models - DPMs) có thể mô phỏng sự bất định này bằng cách sinh ra nhiều mặt nạ phân đoạn đa dạng và thực tế.
+
+Công trình liên quan
 
 Ambiguous Medical Image Segmentation by Diffusion Models (arXiv:2303.12345)
 
 Denoising Diffusion Probabilistic Models (arXiv:1806.05034)
 
-💾 Datasets
+Bộ dữ liệu
 
-We use publicly available medical imaging datasets:
+Dự án sử dụng các bộ dữ liệu ảnh y khoa công khai:
 
-LIDC-IDRI (Lung CT scans with multiple expert annotations)
+LIDC-IDRI – Ảnh CT phổi với nhiều chú giải từ các chuyên gia
 
-AMOS 2022 (Abdominal multi-organ segmentation challenge dataset)
+AMOS 2022 – Bộ dữ liệu thách thức phân đoạn đa cơ quan vùng bụng
 
-🧠 Methodology
+Phương pháp
 
-Our approach combines U-Net and Diffusion Probabilistic Models:
+Phương pháp đề xuất kết hợp giữa U-Net và Diffusion Probabilistic Models:
 
-Base Architecture:
-A U-Net is used as the denoising backbone within the diffusion framework.
+Kiến trúc nền tảng:
+U-Net được sử dụng làm mạng giải nhiễu (denoising backbone) trong khung mô hình khuếch tán.
 
-Forward Process:
-Gradually adds Gaussian noise to the segmentation mask during training.
+Quá trình thuận (Forward Process):
+Dần dần thêm nhiễu Gaussian vào mặt nạ phân đoạn trong giai đoạn huấn luyện.
 
-Reverse Process:
-The model learns to iteratively denoise and reconstruct multiple plausible segmentation masks conditioned on the input medical image.
+Quá trình ngược (Reverse Process):
+Mô hình học cách loại bỏ nhiễu theo từng bước để khôi phục và sinh ra nhiều mặt nạ phân đoạn hợp lý được điều kiện hóa theo ảnh y khoa đầu vào.
 
-Evaluation Metrics:
+Chỉ số đánh giá
 
 Dice Similarity Coefficient (DSC)
 
 Structural Similarity Index (SSIM)
 
-Diversity metrics (e.g., Jensen–Shannon Divergence between masks)
+Các chỉ số đo đa dạng, ví dụ Jensen–Shannon Divergence giữa các mặt nạ được sinh ra
